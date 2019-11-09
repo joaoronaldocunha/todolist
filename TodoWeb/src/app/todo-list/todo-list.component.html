@@ -1,3 +1,13 @@
+<mat-card class="todoItem">
+    <mat-card-actions layout="row" align="center">
+        <button mat-button>
+            <a [routerLink]="[ '/todo/']">
+                <mat-icon>add</mat-icon> CREATE TODO
+            </a>
+        </button>
+    </mat-card-actions>
+</mat-card>
+
 <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
     <ng-container *ngFor="let item of todoListArray; let itemIndex = index">
         <mat-card class="todoItem">
@@ -13,6 +23,11 @@
                 <mat-card-subtitle>Criado em {{item.creationDate}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-actions layout="row" align="end">
+                <button mat-button>
+                    <a [routerLink]="[ '/todo', item.id]">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                </button>
                 <button mat-button (click)="concludeTodo(itemIndex)" >
                     <mat-icon>{{ item.done ? 'delete' : 'check'}}</mat-icon>
                 </button>
